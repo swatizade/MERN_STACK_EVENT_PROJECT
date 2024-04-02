@@ -24,16 +24,37 @@ const Contact = () => {
           headers: { "Content-Type": "application/json" },
         }
       )
+      // .then((res) => {
+      //   toast.success(res.data.message);
+      //   setName("");
+      //   setEmail("");
+      //   setMessage("");
+      //   setSubject("");
+      // })
+      // .catch((error) => {
+      //   toast.error(error.response.data.message);
+      // });
+
       .then((res) => {
+        console.log(res); // Log the response object
+        console.log(res.data); // Log the data property of the response object
         toast.success(res.data.message);
         setName("");
         setEmail("");
         setMessage("");
         setSubject("");
       })
+
       .catch((error) => {
-        toast.error(error.response.data.message);
+        if (error.response && error.response.data) {
+          toast.error(error.response.data.message);
+        } else {
+          toast.error("Something went wrong!!!");
+        }
       });
+      
+      
+
      
   };
 
