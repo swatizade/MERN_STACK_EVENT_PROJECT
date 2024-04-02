@@ -1,12 +1,10 @@
-import { Message } from "../models/messageSchama.js";
+import { Message } from "../models/messageSchema.js";
 
 export const sendMessage = async (req, res) => {
   try {
-    console.log(req.body);
-    console.log("hii");
     const { name, email, subject, message } = req.body;
     if (!name || !email || !subject || !message) {
-      return res.status(200).json({
+      return res.status(400).json({
         success: false,
         message: "All fields are required!",
       });
@@ -43,8 +41,3 @@ export const sendMessage = async (req, res) => {
     });
   }
 };
-
-// export const message = (req, res) => {
-//   res.send("hello world");
-//   console.log("hiiiiiiiiiiiiiiiiiiiiii");
-// };
